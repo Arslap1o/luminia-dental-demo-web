@@ -1,4 +1,4 @@
-title: Premium Dental Demo Site:index.html
+title: High-Contrast Mobile-Optimized Dental Site:index.html
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -13,47 +13,49 @@ title: Premium Dental Demo Site:index.html
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern Minimalist Framework with Day & Night CSS Custom Properties */
+        /* High-Contrast Design Framework */
         :root {
-            /* Light Mode Variables */
-            --bg-main: #f8f9fa;
-            --bg-card: #ffffff;
-            --text-primary: #111111;
-            --text-secondary: #495057;
-            --text-muted: #6c757d;
+            /* Light Mode: Crisp black text on clear light background */
+            --bg-main: #ffffff;
+            --bg-card: #f8f9fa;
+            --text-primary: #000000;
+            --text-secondary: #222222;
+            --text-muted: #555555;
             --accent-blue: #0066cc;
-            --accent-glow: rgba(0, 102, 204, 0.15);
-            --border-color: rgba(0, 0, 0, 0.06);
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --nav-bg: rgba(255, 255, 255, 0.75);
-            --card-hover-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
-            --stats-bg: #ffffff;
-            --input-bg: #f1f3f5;
+            --accent-glow: rgba(0, 102, 204, 0.2);
+            --border-color: #cccccc;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --card-hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            --stats-bg: #f1f3f5;
+            --input-bg: #ffffff;
+            --input-border: #999999;
         }
 
         [data-theme="dark"] {
-            /* Dark Mode Variables */
+            /* Dark Mode: Crisp white text on deep rich dark background */
             --bg-main: #0b111e;
             --bg-card: #131c2e;
-            --text-primary: #f8f9fa;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
+            --text-primary: #ffffff;
+            --text-secondary: #f1f3f5;
+            --text-muted: #cbd5e1;
             --accent-blue: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --nav-bg: rgba(11, 17, 30, 0.75);
-            --card-hover-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            --accent-glow: rgba(59, 130, 246, 0.4);
+            --border-color: #334155;
+            --nav-bg: rgba(11, 17, 30, 0.9);
+            --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             --stats-bg: #0f172a;
             --input-bg: #1e293b;
+            --input-border: #475569;
         }
 
-        /* Smooth overall theme transitions */
+        /* Prevent layout collisions, avoid fixed heights */
         body, .navbar-custom, .custom-card, .doctor-card, .stats-container, .form-control-custom, footer {
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         html {
@@ -71,113 +73,93 @@ title: Premium Dental Demo Site:index.html
         /* Glassmorphism Navigation */
         .navbar-custom {
             background: var(--nav-bg) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
 
-        .nav-link {
-            font-weight: 500;
+        .navbar-brand, .nav-link {
             color: var(--text-primary) !important;
-            position: relative;
-            padding: 0.5rem 1rem;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-blue);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        /* Day & Night Toggle Button Styles */
+        /* Theme Toggle Switch button */
         .theme-toggle-btn {
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         .theme-toggle-btn:hover {
             background: var(--border-color);
-            transform: scale(1.05);
         }
 
-        /* Layout Structure */
+        /* Defensive spacing configuration to prevent mobile overlap */
         .section-spacing {
-            padding-top: 120px;
-            padding-bottom: 120px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        @media (min-width: 768px) {
+            .section-spacing {
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
         }
 
-        /* Interactive Service Cards */
+        /* High-Contrast Interactive Service Cards */
         .custom-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 40px 30px;
+            padding: 30px 24px;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .custom-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             box-shadow: var(--card-hover-shadow);
             border-color: var(--accent-blue);
         }
 
         .icon-box {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(0, 102, 204, 0.08);
-            border-radius: 16px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--accent-blue);
-            transition: all 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .custom-card:hover .icon-box {
-            background-color: var(--accent-blue);
-            color: #ffffff;
-            box-shadow: 0 8px 20px var(--accent-glow);
-        }
-
-        /* Doctor Team Cards & Advanced Hover Descriptions */
+        /* Doctor Team Cards with Hover Interactions */
         .doctor-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             overflow: hidden;
             height: 100%;
-        }
-
-        .doctor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--card-hover-shadow);
+            display: flex;
+            flex-direction: column;
         }
 
         .doctor-img-wrapper {
-            height: 380px;
+            height: 340px;
             overflow: hidden;
-            background-color: #e9ecef;
             position: relative;
+            background-color: #e9ecef;
         }
 
         .doctor-img {
@@ -185,26 +167,26 @@ title: Premium Dental Demo Site:index.html
             height: 100%;
             object-fit: cover;
             object-position: center top;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
 
-        /* Doctor Glassmorphism Hover Overlay */
+        /* Responsive Sliding Glass Overlay */
         .doctor-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(11, 17, 30, 0.85);
+            background: rgba(11, 17, 30, 0.95);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 35px;
+            padding: 24px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.3s ease;
             color: #ffffff;
             transform: translateY(100%);
         }
@@ -215,366 +197,343 @@ title: Premium Dental Demo Site:index.html
             transform: translateY(0);
         }
 
-        .doctor-card:hover .doctor-img {
-            transform: scale(1.05);
+        /* Support touch devices for the overlay flip */
+        .doctor-card:active .doctor-overlay {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .overlay-socials a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #ffffff;
             font-size: 1.2rem;
-            transition: all 0.3s ease;
             margin-right: 15px;
+            transition: color 0.2s ease;
         }
 
         .overlay-socials a:hover {
             color: var(--accent-blue);
-            transform: scale(1.1);
         }
 
-        /* UI Elements & Micro-interactions */
+        /* Buttons & Contrast Rules */
         .btn-premium {
             background-color: var(--accent-blue);
-            color: white !important;
+            color: #ffffff !important;
             border-radius: 30px;
-            padding: 14px 36px;
-            font-weight: 500;
+            padding: 12px 28px;
+            font-weight: 600;
             border: none;
-            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-premium:hover {
-            background-color: #005bb5;
-            box-shadow: 0 0 25px var(--accent-glow);
-            transform: scale(1.02);
+            box-shadow: 0 0 15px var(--accent-glow);
+            opacity: 0.9;
         }
 
         .btn-outline-premium {
-            border: 1px solid var(--text-primary);
+            border: 2px solid var(--text-primary);
             color: var(--text-primary);
             border-radius: 30px;
-            padding: 14px 36px;
-            font-weight: 500;
+            padding: 12px 28px;
+            font-weight: 600;
             background: transparent;
-            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-outline-premium:hover {
             background: var(--text-primary);
-            color: var(--bg-main);
+            color: var(--bg-main) !important;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Stats Strip */
+        /* Trust Stats Configuration */
         .stats-container {
             background: var(--stats-bg);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            padding: 40px 0;
+            padding: 30px 0;
         }
 
-        /* Form styling */
+        /* Form Inputs Optimized to prevent text-clipping from Screenshot (144).png */
         .form-control-custom {
             background: var(--input-bg);
-            border: 1px solid transparent;
+            border: 1px solid var(--input-border);
             border-radius: var(--radius-md);
-            padding: 16px;
-            color: var(--text-primary);
+            padding: 12px 16px;
+            color: var(--text-primary) !important;
+            width: 100%;
         }
 
         .form-control-custom:focus {
-            background: var(--bg-card);
+            background: var(--input-bg);
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-            color: var(--text-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+            color: var(--text-primary) !important;
             outline: none;
         }
 
-        .form-control-custom::placeholder {
-            color: var(--text-muted);
-            opacity: 0.8;
+        select.form-control-custom {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px 12px;
+            padding-right: 36px;
+        }
+
+        [data-theme="dark"] select.form-control-custom {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+        }
+
+        .form-label {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .text-secondary-custom {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Footer Typography Contrast fixes */
+        footer {
+            background-color: #0b111e !important;
+            color: #ffffff !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        footer a {
+            color: #cbd5e1 !important;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #3b82f6 !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+    <!-- Responsive Navbar Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4 text-gradient" href="#home">
+            <a class="navbar-brand fw-bold fs-4" href="#home">
                 <span style="color: var(--accent-blue);">✦</span> Lumina Dental
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="d-flex align-items-center gap-2 order-lg-last">
+                <!-- Theme toggle button remains accessible directly -->
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Night Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a class="btn btn-premium d-none d-sm-inline-block btn-sm px-3 py-2" href="#book">Request Appointment</a>
+                <button class="navbar-toggler border-0 ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" style="color: var(--text-primary)">
+                    <i class="fa-solid fa-bars fs-4"></i>
+                </button>
+            </div>
+            
             <div class="collapse navbar-collapse" id="mainNavigation">
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                <ul class="navbar-nav me-auto ms-lg-4 gap-1 pt-3 pt-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Our Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                    <!-- Day/Night Toggle Switch -->
-                    <li class="nav-item px-2">
-                        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Night Mode">
-                            <i class="fa-solid fa-moon"></i>
-                        </button>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="btn btn-premium btn-sm px-4 py-2" href="#book">Request Appointment</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Area -->
-    <section id="home" style="padding-top: 180px; padding-bottom: 120px; background: radial-gradient(circle at 90% 10%, var(--input-bg) 0%, var(--bg-main) 100%);">
+    <!-- Hero Framework Section -->
+    <section id="home" class="section-spacing" style="padding-top: 140px; background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-main) 100%);">
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-7">
-                    <span class="badge rounded-pill bg-white text-dark border px-3 py-2 mb-4 shadow-sm fw-medium">
-                        ✨ Clinical Excellence & Innovation
-                    </span>
-                    <h1 class="display-3 fw-bold tracking-tight text-gradient mb-4" style="line-height: 1.1;">
+                    <h1 class="display-4 fw-bold mb-4" style="line-height: 1.2;">
                         Next-generation dental care designed for your comfort.
                     </h1>
-                    <p class="lead text-muted mb-5" style="max-width: 600px;">
+                    <p class="lead text-secondary-custom mb-4">
                         Combining elite medical expertise with a relaxing, technology-driven experience to redefine what clinical oral healthcare feels like.
                     </p>
-                    <div class="d-flex gap-3 flex-column flex-sm-row">
+                    <div class="d-flex gap-3 flex-wrap">
                         <a href="#book" class="btn btn-premium">Schedule Visit</a>
                         <a href="#services" class="btn btn-outline-premium">Explore Treatments</a>
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 20px 40px rgba(0,0,0,0.04);">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&h=650&q=80" alt="Modern Clinic Facility" class="img-fluid w-100" style="object-fit: cover;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color);">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&h=550&q=80" alt="Modern Clinic Facility" class="img-fluid w-100">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Stats Strip -->
+    <!-- Trust Numbers Strip -->
     <section class="stats-container">
         <div class="container">
-            <div class="row g-4 text-center">
+            <div class="row g-3 text-center">
                 <div class="col-6 col-md-3">
-                    <h2 class="fw-bold text-gradient mb-1">12,000+</h2>
+                    <h3 class="fw-bold mb-0">12,000+</h3>
                     <p class="text-muted small mb-0">Successful Procedures</p>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h2 class="fw-bold text-gradient mb-1">15+</h2>
+                    <h3 class="fw-bold mb-0">15+</h3>
                     <p class="text-muted small mb-0">Years Dedicated Service</p>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h2 class="fw-bold text-gradient mb-1">99.4%</h2>
-                    <p class="text-muted small mb-0">Patient Satisfaction Rating</p>
+                    <h3 class="fw-bold mb-0">99.4%</h3>
+                    <p class="text-muted small mb-0">Patient Satisfaction</p>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h2 class="fw-bold text-gradient mb-1">4.9/5</h2>
-                    <p class="text-muted small mb-0">Google Business Review</p>
+                    <h3 class="fw-bold mb-0">4.9/5</h3>
+                    <p class="text-muted small mb-0">Google Rating</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dynamic Services Portfolio -->
-    <section id="services" class="section-spacing bg-transparent">
+    <!-- Specialized Treatments Portfolio Grid -->
+    <section id="services" class="section-spacing">
         <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-6 text-center">
-                    <h2 class="fw-bold display-5 mb-3 text-gradient">Our Specialized Services</h2>
-                    <p class="text-muted">A full spectrum of advanced biological and cosmetic dental solutions engineered for life-long health.</p>
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="fw-bold display-5 mb-2">Our Specialized Services</h2>
+                    <p class="text-muted">Advanced biological and cosmetic dental solutions engineered for life-long health.</p>
                 </div>
             </div>
             
-            <div class="row g-4">
-                <div class="col-md-4">
+            <div class="row g-3">
+                <div class="col-md-4 col-sm-6">
                     <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-laptop-medical"></i></div>
-                        <h4 class="fw-bold mb-3">Biocompatible Diagnostics</h4>
-                        <p class="text-muted mb-0">High-resolution 3D imaging and comprehensive early-stage risk profiling to safeguard structural wellness.</p>
+                        <div class="icon-box"><i class="fa-solid fa-laptop-medical"></i></div>
+                        <h4 class="fw-bold mb-2">Biocompatible Diagnostics</h4>
+                        <p class="text-muted small mb-0">High-resolution 3D imaging and comprehensive risk profiling to safeguard structural wellness.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                        <h4 class="fw-bold mb-3">Cosmetic Smile Architecture</h4>
-                        <p class="text-muted mb-0">Ultra-thin porcelain veneers and computer-guided laser teeth whitening systems for pristine aesthetics.</p>
+                        <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h4 class="fw-bold mb-2">Cosmetic Smile Architecture</h4>
+                        <p class="text-muted small mb-0">Ultra-thin porcelain veneers and computer-guided laser teeth whitening systems for pristine aesthetics.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-tooth"></i></div>
-                        <h4 class="fw-bold mb-3">Advanced Implantology</h4>
-                        <p class="text-muted mb-0">Precision structural restorative implants offering permanent, natural structural stability and integration.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-circle-nodes"></i></div>
-                        <h4 class="fw-bold mb-3">Digital Orthodontics</h4>
-                        <p class="text-muted mb-0">Customized clear aligner pathways meticulously simulated in 3D to align alignment seamlessly.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4 class="fw-bold mb-3">Periodontal Therapy</h4>
-                        <p class="text-muted mb-0">Targeted, minimally invasive micro-ultrasonic treatments treating foundational gum tissue diseases.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="icon-box mb-4"><i class="fa-solid fa-kit-medical"></i></div>
-                        <h4 class="fw-bold mb-3">Emergency Microsurgery</h4>
-                        <p class="text-muted mb-0">Immediate, on-demand operative interventions targeting sudden trauma or acute pain management.</p>
+                        <div class="icon-box"><i class="fa-solid fa-tooth"></i></div>
+                        <h4 class="fw-bold mb-2">Advanced Implantology</h4>
+                        <p class="text-muted small mb-0">Precision structural restorative implants offering permanent, natural structural stability.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comprehensive About Section -->
-    <section id="about" class="section-spacing">
+    <!-- About Section Background -->
+    <section id="about" class="section-spacing" style="background: var(--bg-card);">
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <div style="border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&h=700&q=80" alt="Advanced Clinical Operations" class="img-fluid w-100">
-                        <div style="position: absolute; bottom: 30px; left: 30px; right: 30px; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color);" class="text-dark">
-                            <h5 class="fw-bold mb-1"><i class="fa-solid fa-microscope text-primary me-2"></i>Accredited Laboratory</h5>
-                            <p class="text-muted small mb-0">Equipped with internal ultra-precise tier 1 digital ceramic processing units.</p>
-                        </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color);">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&h=600&q=80" alt="Advanced Operations Layout" class="img-fluid w-100">
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="fw-bold display-5 mb-4 text-gradient">Redefining Patient Standards Since 2011</h2>
-                    <p class="text-muted mb-4">
-                        At Lumina Dental, we believe clinical architecture must adapt entirely around the human experience. Our facilities eliminate structural clinical stress by prioritizing transparent medical processes, automated diagnostics, and an empathetic environment.
+                    <h2 class="fw-bold display-6 mb-3">Redefining Patient Standards Since 2011</h2>
+                    <p class="text-secondary-custom mb-3">
+                        At Lumina Dental, we believe clinical architecture must adapt entirely around the human experience. Our facilities eliminate structural stress by prioritizing transparent medical processes, automated diagnostics, and an empathetic environment.
                     </p>
-                    <p class="text-muted mb-5">
+                    <p class="text-secondary-custom mb-0">
                         Every surgical room is outfitted with low-radiation digital imaging arrays and custom entertainment interfaces, allowing you to comfortably remain informed through every step of your diagnostic plan.
                     </p>
-                    <div class="row g-4">
-                        <div class="col-sm-6">
-                            <h5 class="fw-bold text-gradient"><i class="fa-solid fa-award text-primary me-2"></i>ISO Certified Systems</h5>
-                            <p class="text-muted small">Adhering perfectly to rigorous international validation guidelines.</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h5 class="fw-bold text-gradient"><i class="fa-solid fa-hand-holding-medical text-primary me-2"></i>On-Site Diagnostics</h5>
-                            <p class="text-muted small">Zero time wasted waiting on outside clinical scanning centers.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Medical Staff Roster (With Hover Overlay Enhancements) -->
-    <section id="team" class="section-spacing bg-transparent">
+    <!-- Medical Staff Directory with Interactive Overlay Descs -->
+    <section id="team" class="section-spacing">
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-6 text-center">
-                    <h2 class="fw-bold display-5 mb-3 text-gradient">Our Clinical Directors</h2>
-                    <p class="text-muted">Hover over our specialists to read their personal medical philosophies and connect with them.</p>
+                <div class="col-12 text-center">
+                    <h2 class="fw-bold display-5 mb-2">Our Clinical Directors</h2>
+                    <p class="text-muted">Hover or tap on our specialists to read their personal medical philosophies.</p>
                 </div>
             </div>
             
             <div class="row g-4">
-                <!-- Specialist 1 -->
+                <!-- Dr. Vance -->
                 <div class="col-lg-4 col-md-6">
                     <div class="doctor-card">
                         <div class="doctor-img-wrapper">
                             <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&h=750&q=80" alt="Dr. Alexander Vance" class="doctor-img">
-                            
-                            <!-- Sliding Hover Description -->
                             <div class="doctor-overlay">
                                 <h5 class="fw-bold text-white mb-2">Clinical Philosophy</h5>
-                                <p class="small text-white-50 mb-4">"Restoration is art married to engineering. We don't just solve pain; we re-architect natural structure and functional beauty designed to endure a lifetime."</p>
-                                <div class="mb-4 small">
-                                    <i class="fa-solid fa-check-circle text-primary me-2"></i><strong>Accepting Clients</strong>
-                                </div>
+                                <p class="small text-white-50 mb-3">"Restoration is art married to engineering. We don't just solve pain; we re-architect natural structure and functional beauty designed to endure."</p>
+                                <span class="small d-block mb-3"><i class="fa-solid fa-circle text-success me-1"></i> Accepting Appointments</span>
                                 <div class="overlay-socials">
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-linkedin"></i></a>
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-regular fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <span class="text-uppercase small tracking-wider text-muted fw-bold d-block mb-1">Chief Prosthodontist</span>
+                        <div class="p-3">
+                            <span class="text-uppercase small fw-bold text-muted d-block mb-1">Chief Prosthodontist</span>
                             <h4 class="fw-bold mb-2">Dr. Alexander Vance</h4>
-                            <p class="text-muted small mb-3">Alumnus of Harvard School of Dental Medicine with 14+ years managing micro-reconstructive layouts.</p>
-                            <hr class="my-3 opacity-25">
-                            <span class="badge bg-light text-dark border">Implantology</span>
-                            <span class="badge bg-light text-dark border">Full-Mouth Restoration</span>
+                            <p class="text-muted small mb-0">Alumnus of Harvard School of Dental Medicine with 14+ years managing micro-reconstructive layouts.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Specialist 2 (Middle Image Fixed & Checked) -->
+                <!-- Dr. Maya Lin (Middle Image Restored) -->
                 <div class="col-lg-4 col-md-6">
                     <div class="doctor-card">
                         <div class="doctor-img-wrapper">
-                            <!-- Fixed to high-res female medical specialist Unsplash link -->
                             <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600&h=800" alt="Dr. Maya Lin" class="doctor-img">
-                            
-                            <!-- Sliding Hover Description -->
                             <div class="doctor-overlay">
                                 <h5 class="fw-bold text-white mb-2">Clinical Philosophy</h5>
-                                <p class="small text-white-50 mb-4">"Orthodontics is the pathway to systemic biological symmetry. By carefully planning micro-alignment, we structuralize healthier, fully-confident life profiles."</p>
-                                <div class="mb-4 small">
-                                    <i class="fa-solid fa-check-circle text-primary me-2"></i><strong>Elite Align Specialist</strong>
-                                </div>
+                                <p class="small text-white-50 mb-3">"Orthodontics is the pathway to systemic biological symmetry. By carefully planning alignment, we structuralize healthier, fully-confident life profiles."</p>
+                                <span class="small d-block mb-3"><i class="fa-solid fa-circle text-success me-1"></i> Consultation Open</span>
                                 <div class="overlay-socials">
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-linkedin"></i></a>
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-regular fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <span class="text-uppercase small tracking-wider text-muted fw-bold d-block mb-1">Director of Orthodontics</span>
+                        <div class="p-3">
+                            <span class="text-uppercase small fw-bold text-muted d-block mb-1">Director of Orthodontics</span>
                             <h4 class="fw-bold mb-2">Dr. Maya Lin</h4>
-                            <p class="text-muted small mb-3">Specializes in digital movement biological simulations and complex facial aesthetic engineering profiles.</p>
-                            <hr class="my-3 opacity-25">
-                            <span class="badge bg-light text-dark border">Clear Aligners</span>
-                            <span class="badge bg-light text-dark border">Pediatric Ortho</span>
+                            <p class="text-muted small mb-0">Specializes in digital movement biological simulations and complex facial aesthetic engineering profiles.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Specialist 3 -->
+                <!-- Dr. Sterling -->
                 <div class="col-lg-4 col-md-12">
                     <div class="doctor-card">
                         <div class="doctor-img-wrapper">
                             <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&h=750&q=80" alt="Dr. Marcus Sterling" class="doctor-img">
-                            
-                            <!-- Sliding Hover Description -->
                             <div class="doctor-overlay">
                                 <h5 class="fw-bold text-white mb-2">Clinical Philosophy</h5>
-                                <p class="small text-white-50 mb-4">"Surgical execution relies completely on micro-precision and minimal invasiveness. Our core objective is accelerating post-operative cellular healing loops."</p>
-                                <div class="mb-4 small">
-                                    <i class="fa-solid fa-check-circle text-primary me-2"></i><strong>Board Certified Director</strong>
-                                </div>
+                                <p class="small text-white-50 mb-3">"Surgical execution relies completely on micro-precision and minimal invasiveness. Our core objective is accelerating post-operative cellular healing loops."</p>
+                                <span class="small d-block mb-3"><i class="fa-solid fa-circle text-success me-1"></i> Surgery Slots Available</span>
                                 <div class="overlay-socials">
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-linkedin"></i></a>
                                     <a href="#" onclick="event.preventDefault();"><i class="fa-regular fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <span class="text-uppercase small tracking-wider text-muted fw-bold d-block mb-1">Maxillofacial Surgeon</span>
+                        <div class="p-3">
+                            <span class="text-uppercase small fw-bold text-muted d-block mb-1">Maxillofacial Surgeon</span>
                             <h4 class="fw-bold mb-2">Dr. Marcus Sterling</h4>
-                            <p class="text-muted small mb-3">Extensive clinical residency background focusing heavily on micro-tissue surgeries and trauma management.</p>
-                            <hr class="my-3 opacity-25">
-                            <span class="badge bg-light text-dark border">Bone Grafting</span>
-                            <span class="badge bg-light text-dark border">Surgical Extractions</span>
+                            <p class="text-muted small mb-0">Extensive clinical residency background focusing heavily on micro-tissue surgeries and trauma management.</p>
                         </div>
                     </div>
                 </div>
@@ -582,99 +541,84 @@ title: Premium Dental Demo Site:index.html
         </div>
     </section>
 
-    <!-- Verified Patient Testimonials -->
-    <section id="testimonials" class="section-spacing">
+    <!-- Verified Patient Experience Testimonials -->
+    <section id="testimonials" class="section-spacing" style="background: var(--bg-card);">
         <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-6 text-center">
-                    <h2 class="fw-bold display-5 mb-3 text-gradient">The Patient Experience</h2>
-                    <p class="text-muted">Read firsthand accounts from our community of patients detailing their procedural transformations.</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
+            <div class="row g-3">
                 <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"The standard of care here is unmatched. Dr. Vance meticulously mapped out my implant pathway visually beforehand, and the entire procedure was completely pain-free."</p>
-                        <h6 class="fw-bold mb-0 text-gradient">Eleanor Vance</h6>
-                        <small class="text-muted">Corporate Executive</small>
+                    <div class="p-4 bg-white text-dark rounded-3 h-100 border">
+                        <div class="mb-2 text-warning"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="small fst-italic mb-3">"The standard of care here is unmatched. Dr. Vance meticulously mapped out my implant pathway visually beforehand, and the entire procedure was completely pain-free."</p>
+                        <h6 class="fw-bold mb-0">Eleanor Vance</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"Lumina completely adjusted my perspective on visiting the dentist. The facility feels like an Apple store rather than a clinical room, which instantly eliminated my anxiety."</p>
-                        <h6 class="fw-bold mb-0 text-gradient">James Thorne</h6>
-                        <small class="text-muted">Software Architect</small>
+                    <div class="p-4 bg-white text-dark rounded-3 h-100 border">
+                        <div class="mb-2 text-warning"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="small fst-italic mb-3">"Lumina completely adjusted my perspective on visiting the dentist. The facility feels like an Apple store rather than a clinical room, which instantly eliminated my anxiety."</p>
+                        <h6 class="fw-bold mb-0">James Thorne</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"Their digital tracking program was incredibly straightforward. I received my custom aligners much sooner than expected, and the alignment monitoring was fully transparent."</p>
-                        <h6 class="fw-bold mb-0 text-gradient">Clara Montgomery</h6>
-                        <small class="text-muted">Creative Director</small>
+                    <div class="p-4 bg-white text-dark rounded-3 h-100 border">
+                        <div class="mb-2 text-warning"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="small fst-italic mb-3">"Their digital tracking program was incredibly straightforward. I received my custom aligners much sooner than expected, and the alignment monitoring was fully transparent."</p>
+                        <h6 class="fw-bold mb-0">Clara Montgomery</h6>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Onboarding & Booking Section -->
-    <section id="book" class="section-spacing bg-transparent">
+    <!-- Secure Intake Onboarding Section (Fixed layout boundaries to fix Screenshot (144).png) -->
+    <section id="book" class="section-spacing">
         <div class="container">
-            <div class="custom-card p-5" style="background: radial-gradient(circle at 0% 100%, var(--bg-card) 0%, var(--bg-main) 100%);">
-                <div class="row align-items-center g-5">
+            <div class="p-4 p-md-5 rounded-4 border" style="background: var(--bg-card);">
+                <div class="row g-4">
                     <div class="col-lg-5">
-                        <h2 class="fw-bold display-6 mb-3 text-gradient">Begin Your Structural Care Plan</h2>
-                        <p class="text-muted mb-4">Submit your details directly to our scheduling staff. A clinic coordinator will confirm your dynamic consultation slot within 2 business hours.</p>
-                        <div class="mb-4">
-                            <span class="fw-bold d-block text-uppercase small tracking-wider text-muted mb-1">Direct Access Line</span>
-                            <span class="fs-5 fw-bold" style="color: var(--accent-blue);"><i class="fa-solid fa-phone me-2"></i>+1 (555) 019-2831</span>
+                        <h2 class="fw-bold mb-3">Begin Your Structural Care Plan</h2>
+                        <p class="text-muted small mb-4">Submit your details directly to our scheduling staff. A clinic coordinator will confirm your dynamic consultation slot within 2 business hours.</p>
+                        
+                        <div class="mb-3">
+                            <span class="fw-bold d-block text-uppercase small text-muted mb-1">Direct Access Line</span>
+                            <span class="fs-6 fw-bold"><i class="fa-solid fa-phone me-2"></i>+1 (555) 019-2831</span>
                         </div>
                         <div>
-                            <span class="fw-bold d-block text-uppercase small tracking-wider text-muted mb-1">Operational Hours</span>
+                            <span class="fw-bold d-block text-uppercase small text-muted mb-1">Operational Hours</span>
                             <span class="small text-muted d-block"><i class="fa-regular fa-clock me-2"></i>Mon – Fri: 8:00 AM – 7:00 PM</span>
-                            <span class="small text-muted d-block ms-4">Sat: 9:00 AM – 3:00 PM</span>
                         </div>
                     </div>
+                    
                     <div class="col-lg-7">
                         <form onsubmit="event.preventDefault(); alert('Demo Submission Captured Securely.');">
                             <div class="row g-3">
                                 <div class="col-sm-6">
-                                    <label class="form-label small fw-bold text-muted">Full Name</label>
+                                    <label class="form-label small mb-1">Full Name</label>
                                     <input type="text" class="form-control form-control-custom" placeholder="John Doe" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="form-label small fw-bold text-muted">Email Address</label>
+                                    <label class="form-label small mb-1">Email Address</label>
                                     <input type="email" class="form-control form-control-custom" placeholder="john@example.com" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="form-label small fw-bold text-muted">Phone Number</label>
+                                    <label class="form-label small mb-1">Phone Number</label>
                                     <input type="tel" class="form-control form-control-custom" placeholder="(555) 000-0000" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="form-label small fw-bold text-muted">Select Treatment Specialty</label>
-                                    <select class="form-select form-control-custom" style="appearance: none;">
+                                    <label class="form-label small mb-1">Treatment Specialty</label>
+                                    <select class="form-control form-control-custom">
                                         <option>Cosmetic Smile Architecture</option>
                                         <option>Advanced Implantology</option>
                                         <option>Digital Orthodontics</option>
-                                        <option>General Oral Diagnostic Check</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label small fw-bold text-muted">Additional Medical Notes (Optional)</label>
-                                    <textarea class="form-control form-control-custom" rows="4" placeholder="Briefly detail your primary clinical objectives..."></textarea>
+                                    <label class="form-label small mb-1">Medical Notes (Optional)</label>
+                                    <textarea class="form-control form-control-custom" rows="3" placeholder="Briefly detail your primary clinical objectives..."></textarea>
                                 </div>
-                                <div class="col-12 text-end mt-4">
-                                    <button type="submit" class="btn btn-premium w-100 w-sm-auto">Request Secured Slot</button>
+                                <!-- Clean button alignment without collision vectors -->
+                                <div class="col-12 pt-2">
+                                    <button type="submit" class="btn btn-premium w-100">Request Secured Slot</button>
                                 </div>
                             </div>
                         </form>
@@ -684,39 +628,37 @@ title: Premium Dental Demo Site:index.html
         </div>
     </section>
 
-    <!-- Structural Corporate Footer Layout -->
-    <footer class="py-5 bg-dark text-white" style="border-top: 1px solid rgba(255,255,255,0.1);">
+    <!-- Structural Corporate Footer Layout (Enforced Absolute High Contrast Dark Theme) -->
+    <footer class="py-5">
         <div class="container">
-            <div class="row g-4 mb-5">
-                <div class="col-lg-4">
-                    <h4 class="fw-bold mb-3">✦ Lumina Dental</h4>
-                    <p class="text-muted small" style="max-width: 300px;">Engineering next-generation diagnostics and premium aesthetic restorative treatment frameworks with unparalleled care.</p>
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="fw-bold mb-2">✦ Lumina Dental</h5>
+                    <p class="text-muted small">Engineering next-generation diagnostics and premium aesthetic restorative treatment frameworks with unparalleled care.</p>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <h6 class="fw-bold text-uppercase tracking-wider small mb-3 text-white-50">Quick Pathways</h6>
-                    <ul class="list-unstyled small d-flex flex-column gap-2">
-                        <li><a href="#services" class="text-decoration-none text-muted">Treatments Portfolio</a></li>
-                        <li><a href="#about" class="text-decoration-none text-muted">Clinical Strategy</a></li>
-                        <li><a href="#team" class="text-decoration-none text-muted">Medical Directorate</a></li>
-                        <li><a href="#book" class="text-decoration-none text-muted">Registration Access</a></li>
+                    <h6 class="text-white-50 small text-uppercase mb-2">Pathways</h6>
+                    <ul class="list-unstyled small d-flex flex-column gap-1">
+                        <li><a href="#services" class="text-decoration-none">Treatments Portfolio</a></li>
+                        <li><a href="#about" class="text-decoration-none">Clinical Strategy</a></li>
+                        <li><a href="#team" class="text-decoration-none">Medical Directorate</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <h6 class="fw-bold text-uppercase tracking-wider small mb-3 text-white-50">Legal Verification</h6>
-                    <ul class="list-unstyled small d-flex flex-column gap-2">
-                        <li><a href="#" class="text-decoration-none text-muted" onclick="event.preventDefault();">HIPAA Compliance</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted" onclick="event.preventDefault();">Patient Privacy Policy</a></li>
-                        <li><a href="#" class="text-decoration-none text-muted" onclick="event.preventDefault();">Terms of Treatment</a></li>
+                    <h6 class="text-white-50 small text-uppercase mb-2">Verification</h6>
+                    <ul class="list-unstyled small d-flex flex-column gap-1">
+                        <li><a href="#" class="text-decoration-none" onclick="event.preventDefault();">HIPAA Compliance</a></li>
+                        <li><a href="#" class="text-decoration-none" onclick="event.preventDefault();">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
-                    <h6 class="fw-bold text-uppercase tracking-wider small mb-3 text-white-50">Demo Profile</h6>
-                    <p class="text-muted small mb-0">Designed by <br><strong class="text-white">Arslap 1</strong></p>
+                    <h6 class="text-white-50 small text-uppercase mb-2">Production</h6>
+                    <p class="text-muted small mb-0">Built by <br><strong class="text-white">Arslap 1</strong>.</p>
                 </div>
             </div>
-            <hr class="my-4 opacity-10">
-            <div class="row text-center">
-                <p class="text-muted small mb-0">© 2026 Lumina Dental Medical Corporation. All rights reserved globally.</p>
+            <hr class="opacity-10 my-4">
+            <div class="text-center">
+                <p class="text-muted small mb-0">© 2026 Lumina Dental Medical Corp. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -724,12 +666,11 @@ title: Premium Dental Demo Site:index.html
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom Theme Switching JavaScript Logic -->
+    <!-- Theme Engine Javascript Layer -->
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
 
-        // Check for local storage settings
         const currentTheme = localStorage.getItem('theme') || 'light';
         rootElement.setAttribute('data-theme', currentTheme);
         updateToggleIcon(currentTheme);
@@ -752,4 +693,3 @@ title: Premium Dental Demo Site:index.html
     </script>
 </body>
 </html>
-
